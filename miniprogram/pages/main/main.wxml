@@ -1,0 +1,51 @@
+<view class='container'> 
+  <!-- loading -->
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading>
+
+  <view class='head'>
+    <view class='lside'>
+      <text class='title'>情侣版2048</text>
+      <text class='play' bindtap='gameStart'>{{start}}</text>
+    </view>
+    <view class="rside">
+      <view class='rsideu'>
+        <text>当前阶段<text>{{score}}</text></text>
+      </view>
+      <view class='rsided'>
+        <text>历史最高<text>{{bestScore}}</text></text>
+      </view>
+    </view>
+  </view>
+
+  <view class="game"> 
+    <view class="game-start" hidden="{{play}}">
+      <text class='pym'>听说玩到白头偕老的都可以成真哦！</text>
+    </view>
+    <!-- 矩阵 -->
+    <view bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+      <view wx:for="{{num}}" wx:for-item="row" wx:key="row.key">
+        <view class='cell' wx:for="{{row}}" wx:for-item="cell" wx:key="cell.key">
+          <view class='cell-con cell-con-{{cell}}'>
+            <view wx:if="{{cell==2}}">{{"初见"}}</view>
+            <view wx:if="{{cell==4}}">{{"搭赸"}}</view>
+            <view wx:if="{{cell==8}}">{{"暧昧"}}</view>
+            <view wx:if="{{cell==16}}">{{"约会"}}</view>
+            <view wx:if="{{cell==32}}">{{"表白"}}</view>
+            <view wx:if="{{cell==64}}">{{"恋爱"}}</view>
+            <view wx:if="{{cell==128}}">{{"热恋"}}</view>
+            <view wx:if="{{cell==256}}">{{"冷淡"}}</view>
+            <view wx:if="{{cell==512}}">{{"稳定"}}</view>
+            <view wx:if="{{cell==1024}}">{{"恩爱"}}</view>
+            <view wx:if="{{cell==2048}}">{{"结婚"}}</view>
+            <view wx:if="{{cell==4096}}">{{"白头偕老"}}</view>
+          </view>
+        </view>
+      </view> 
+    </view>
+    <view class='game-over' hidden='{{!over}}'>
+      <text class='pro'>{{endMsg}}</text>
+    </view> 
+  </view>
+</view>
